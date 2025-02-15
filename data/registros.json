@@ -1,0 +1,30 @@
+[
+    {
+        "proyecto": "osiris",
+        "entorno": "PRE",
+        "version": "1.62",
+        "fecha": "2025-02-12",
+        "changeLog": "- aaaa\r\n- bbbb\r\n- cccc"
+    },
+    {
+        "proyecto": "idcat",
+        "entorno": "PRE",
+        "version": "1.46 3.47 3.47",
+        "fecha": "2025-02-13",
+        "changeLog": "- cosas cosas cosas cosas cosas cosas cosas \r\ncosas \r\n- cosas cosas cosas cosas cosas cosas cosas cosas "
+    },
+    {
+        "proyecto": "osiris",
+        "entorno": "PRO",
+        "version": "1.61",
+        "fecha": "2025-02-05",
+        "changeLog": "asdf asdfasdf asdfa sdf "
+    },
+    {
+        "proyecto": "idcat",
+        "entorno": "PRO",
+        "version": "1.45 3.46 3.46",
+        "fecha": "2025-02-05",
+        "changeLog": "asdfas adf asdfad adf ad fa dfas"
+    }
+]
