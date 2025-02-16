@@ -259,10 +259,6 @@ select {
     transition: background 0.3s ease;
 }
 
-button[type="submit"]:hover {
-    background: #1d4ed8;
-}
-
 .btn-delete {
     background: none;
     border: none;
@@ -273,7 +269,7 @@ button[type="submit"]:hover {
 }
 
 .btn-delete:hover {
-    color: #dc2626; /* Color rojo más oscuro al pasar el ratón */
+    color: #db75f0; /* Color rojo más oscuro al pasar el ratón */
 }
 
 .btn-toggle-changelog {
