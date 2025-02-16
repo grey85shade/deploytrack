@@ -10,8 +10,8 @@
 <body>
 
 <div class="container">
-<?php include 'form.php'; ?>
     <h1>Release Dashboard</h1>
+    <?php include 'form.php'; ?>
     <!-- Top section with 4 boxes -->
     <div class="card-grid">
         <?php if ($proIdcat) { ?>
@@ -142,10 +142,14 @@
                         </td>
                         <td>
                             <i class="fas fa-file-alt"></i>
-                            <?php echo strlen($registro['changeLog']) > 50 ? substr($registro['changeLog'], 0, 50) . '...' : $registro['changeLog']; ?>
+                            <span class="short-changelog"><?php echo strlen($registro['changeLog']) > 70 ? substr($registro['changeLog'], 0, 70) . '...' : $registro['changeLog']; ?></span>
+                            <span class="full-changelog" style="display:none;"><?php echo $registro['changeLog']; ?></span>
+                            <button type="button" class="btn-toggle-changelog">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
                         </td>
                         <td>
-                            <form method="POST" action="" style="display:inline;">
+                            <form method="POST" action="" class="delete-form" style="display:inline;">
                                 <input type="hidden" name="proyecto" value="<?php echo $registro['proyecto']; ?>">
                                 <input type="hidden" name="entorno" value="<?php echo $registro['entorno']; ?>">
                                 <input type="hidden" name="version" value="<?php echo $registro['version']; ?>">

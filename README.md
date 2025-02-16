@@ -29,10 +29,10 @@ php-project
    Ensure you have a local server environment set up (e.g., WAMP, XAMPP) to run PHP applications.
 
 3. **File Permissions**
-   Make sure that the `src/web/registros.json` file is writable by the web server.
+   Make sure that the `data/registros.json` file is writable by the web server.
 
 4. **Access the Application**
-   Open your web browser and navigate to `http://localhost/php-project/src/main.php` to access the application.
+   Open your web browser and navigate to `http://localhost/php-project/App/Views/index.php` to access the application.
 
 ## Usage
 - Click the "+" icon located in the bottom right corner of the application to open the form for adding a new record.

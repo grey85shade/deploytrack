@@ -23,7 +23,7 @@
             <label for="changeLog">Change Log:</label>
             <textarea id="changeLog" name="changeLog" required></textarea>
 
-            <button type="submit">Submit</button>
+            <button class="boton-guardar" type="submit">Submit</button>
         </form>
     </div>
 </div>
