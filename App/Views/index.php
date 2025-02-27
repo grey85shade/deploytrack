@@ -12,6 +12,7 @@
 <div class="container">
     <h1>Release Dashboard</h1>
     <?php include 'form.php'; ?>
+    <?php include 'edit_form.php'; ?>
     <!-- Top section with 4 boxes -->
     <div class="card-grid">
         <?php if ($proIdcat) { ?>
@@ -158,6 +159,9 @@
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </form>
+                            <button type="button" class="btn-edit btn-delete" data-id="<?php echo $registro['id']; ?>">
+                                <i class="fas fa-edit"></i>
+                            </button>
                         </td>
                     </tr>
                     <?php } ?>
@@ -166,6 +170,30 @@
         </div>
     </div>
 </div>
+
+<div id="edit-popup" class="popup-overlay">
+    <div class="popup-content">
+        <div class="cabecera-popup">Editar Registro</div>
+        <form id="edit-form" method="POST" action="">
+            <input type="hidden" name="id" id="edit-id">
+            <label for="edit-proyecto">Proyecto:</label>
+            <input type="text" name="proyecto" id="edit-proyecto" required>
+            <label for="edit-entorno">Entorno:</label>
+            <select name="entorno" id="edit-entorno" required>
+                <option value="PRO">PRO</option>
+                <option value="PRE">PRE</option>
+            </select>
+            <label for="edit-version">Versión:</label>
+            <input type="text" name="version" id="edit-version" required>
+            <label for="edit-fecha">Fecha:</label>
+            <input type="date" name="fecha" id="edit-fecha" required>
+            <label for="edit-changelog">Changelog:</label>
+            <textarea name="changeLog" id="edit-changelog" required></textarea>
+            <button type="submit" class="boton-guardar">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
 <button id="icon" class="add-icon icon-container">+</button>
 
 <script src="../public/js/scripts.js"></script>

@@ -47,4 +47,44 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    document.querySelectorAll('.btn-edit').forEach(button => {
+        button.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            fetch(`../routes/web.php?id=${id}`)
+                .then(response => response.text()) // Cambiar a .text() para depurar
+                .then(data => {
+                    console.log(data); // Agregar console.log para depurar
+                    const jsonData = JSON.parse(data); // Convertir a JSON
+                    document.getElementById('edit-id').value = jsonData.id;
+                    document.getElementById('edit-proyecto').value = jsonData.proyecto;
+                    document.getElementById('edit-entorno').value = jsonData.entorno;
+                    document.getElementById('edit-version').value = jsonData.version;
+                    document.getElementById('edit-fecha').value = jsonData.fecha;
+                    document.getElementById('edit-changelog').value = jsonData.changeLog;
+                    document.getElementById('edit-popup').style.display = 'flex';
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    });
+
+    document.getElementById('edit-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        formData.append('update', '1');
+        fetch('../routes/web.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Agregar console.log para depurar
+            if (data.success) {
+                location.reload(); // Refrescar la página para ver los cambios
+            } else {
+                alert('Error al guardar los cambios');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
 });
