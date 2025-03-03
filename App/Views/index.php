@@ -15,7 +15,10 @@
     <?php include 'edit_form.php'; ?>
     <!-- Top section with 4 boxes -->
     <div class="card-grid">
-        <?php if ($proIdcat) { ?>
+        <?php if ($proIdcat) { 
+            $preIdcatVersiones = explode(" ", $preIdcat['version']);
+            $proIdcatVersiones = explode(" ", $proIdcat['version']);
+        ?>
             <div class="card">
                 <div class="card-header">
                     <h2 class="card-title">
@@ -38,7 +41,10 @@
             </div>
         <?php } ?>
 
-        <?php if ($proOsiris) { ?>
+        <?php if ($proOsiris) { 
+            $preOsirisVersiones = explode(" ", $preOsiris['version']);
+            $proOsirisVersiones = explode(" ", $proOsiris['version']);
+            ?>
             <div class="card">
                 <div class="card-header">
                     <h2 class="card-title">
@@ -144,7 +150,7 @@
                         <td>
                             <i class="fas fa-file-alt"></i>
                             <span class="short-changelog"><?php echo strlen($registro['changeLog']) > 70 ? substr($registro['changeLog'], 0, 70) . '...' : $registro['changeLog']; ?></span>
-                            <span class="full-changelog" style="display:none;"><?php echo $registro['changeLog']; ?></span>
+                            <span class="full-changelog"><?php echo $registro['changeLog']; ?></span>
                             <button type="button" class="btn-toggle-changelog">
                                 <i class="fas fa-chevron-down"></i>
                             </button>
@@ -168,29 +174,6 @@
                 </tbody>
             </table>
         </div>
-    </div>
-</div>
-
-<div id="edit-popup" class="popup-overlay">
-    <div class="popup-content">
-        <div class="cabecera-popup">Editar Registro</div>
-        <form id="edit-form" method="POST" action="">
-            <input type="hidden" name="id" id="edit-id">
-            <label for="edit-proyecto">Proyecto:</label>
-            <input type="text" name="proyecto" id="edit-proyecto" required>
-            <label for="edit-entorno">Entorno:</label>
-            <select name="entorno" id="edit-entorno" required>
-                <option value="PRO">PRO</option>
-                <option value="PRE">PRE</option>
-            </select>
-            <label for="edit-version">Versión:</label>
-            <input type="text" name="version" id="edit-version" required>
-            <label for="edit-fecha">Fecha:</label>
-            <input type="date" name="fecha" id="edit-fecha" required>
-            <label for="edit-changelog">Changelog:</label>
-            <textarea name="changeLog" id="edit-changelog" required></textarea>
-            <button type="submit" class="boton-guardar">Guardar Cambios</button>
-        </form>
     </div>
 </div>
 

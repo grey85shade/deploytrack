@@ -8,11 +8,11 @@ class Record {
         $registros = $this->cargarRegistros();
         $nuevoRegistro = [
             'id' => uniqid(),
-            'proyecto' => $proyecto,
-            'entorno' => $entorno,
-            'version' => $version,
-            'fecha' => $fecha,
-            'changeLog' => $cambio,
+            'proyecto' => $this->sanitizeInput($proyecto),
+            'entorno' => $this->sanitizeInput($entorno),
+            'version' => $this->sanitizeInput($version),
+            'fecha' => $this->sanitizeInput($fecha),
+            'changeLog' => $this->sanitizeInput($cambio),
         ];
         $registros[] = $nuevoRegistro;
         file_put_contents($this->archivo, json_encode($registros, JSON_PRETTY_PRINT));
@@ -74,5 +74,9 @@ class Record {
             return is_array($decoded) ? $decoded : [];
         }
         return [];
+    }
+
+    private function sanitizeInput($data) {
+        return htmlspecialchars(strip_tags(trim($data)));
     }
 }

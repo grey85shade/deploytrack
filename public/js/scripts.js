@@ -2,6 +2,8 @@
 const icon = document.getElementById('icon');
 const popup = document.getElementById('popup');
 const form = document.getElementById('recordForm');
+const editPopup = document.getElementById('edit-popup');
+const editForm = document.getElementById('edit-form');
 
 // Abrir popup
 icon.addEventListener('click', () => {
@@ -16,22 +18,27 @@ popup.addEventListener('click', (event) => {
   }
 });
 
+// Cerrar el popup de edición con clic fuera del cuadro
+editPopup.addEventListener('click', (event) => {
+  if (event.target === editPopup) {
+    editPopup.style.display = 'none';
+    editForm.reset();
+  }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const toggleButtons = document.querySelectorAll('.btn-toggle-changelog');
 
     toggleButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const shortChangelog = this.previousElementSibling.previousElementSibling;
             const fullChangelog = this.previousElementSibling;
-            const isExpanded = fullChangelog.style.display === 'block';
+            const isExpanded = fullChangelog.classList.contains('expanded');
 
             if (isExpanded) {
-                fullChangelog.style.display = 'none';
-                shortChangelog.style.display = 'inline';
+                fullChangelog.classList.remove('expanded');
                 this.innerHTML = '<i class="fas fa-chevron-down"></i>';
             } else {
-                fullChangelog.style.display = 'block';
-                shortChangelog.style.display = 'none';
+                fullChangelog.classList.add('expanded');
                 this.innerHTML = '<i class="fas fa-chevron-up"></i>';
             }
         });
@@ -80,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             console.log(data); // Agregar console.log para depurar
             if (data.success) {
+                editPopup.style.display = 'none'; // Cerrar el popup de edición
                 location.reload(); // Refrescar la página para ver los cambios
             } else {
                 alert('Error al guardar los cambios');
